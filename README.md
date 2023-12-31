@@ -1,110 +1,88 @@
-# [Horizon UI Tailwind CSS NextJS ⚡️](https://horizon-ui.com/horizon-tailwind-react-nextjs) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Check%20Horizon%20UI,%20the%20trendiest%20open-source%20admin%20dashboard%20template%20for%20Tailwind%20CSS,%20React%20JS%20and%20NextJS%20-%20https%3A//horizon-ui.com/)
+# TailAdmin Next.js - Free Next.js Tailwind Admin Dashboard Template
 
-![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
-[![GitHub issues open](https://img.shields.io/github/issues/horizon-ui/horizon-tailwind-react-nextjs.svg?maxAge=2592000)](https://github.com/horizon-ui/horizon-tailwind-react-nextjs/issues?q=is%3Aopen+is%3Aissue)
+TailAdmin is a free and open-source admin dashboard template built on **Next.js and Tailwind CSS** providing developers with everything they need to create a feature-rich and data-driven: back-end, dashboard, or admin panel solution for any sort of web project.
 
-<p>&nbsp;</p>
+[![tailwind nextjs admin template](https://github.com/TailAdmin/free-nextjs-admin-dashboard/blob/main/tailadmin-nextjs.jpg)](https://nextjs-demo.tailadmin.com/)
 
-[<img alt="Horizon UI Tailwind CSS NextJS" src="https://i.ibb.co/mtLkcYL/horizon-ui-nextjs-free.png" /> ](https://github.com/horizon-ui/horizon-tailwind-react-nextjs)
+With TailAdmin Next.js, you get access to all the necessary dashboard UI components, elements, and pages required to build a high-quality and complete dashboard or admin panel. Whether you're building a dashboard or admin panel for a complex web application or a simple website. 
 
-<p>&nbsp;</p>
+TailAdmin utilizes the powerful features of **Next.js 13** and common features of Next.js such as server-side rendering (SSR), static site generation (SSG), and seamless API route integration. Combined with the advancements of **React 18** and the robustness of **TypeScript**, TailAdmin is the perfect solution to help get your project up and running quickly.
 
-Get started and build your dream web app with Horizon UI Tailwind CSS NextJS, the trendiest & innovative Open Source Admin Template for Tailwind CSS, React & NextJS!
+### [✨ Visit Website](https://tailadmin.com/)
+### [🚀 PRO Demo](https://nextjs-demo.tailadmin.com/)
+### [🚀 FREE Demo](https://nextjs-free-demo.tailadmin.com/)
 
----
+### TailAdmin Next.js PRO vs TailAdmin Next.js FREE Comparison 📊
 
-### Introduction
+#### [TailAdmin Next.js PRO](https://nextjs-demo.tailadmin.com/)
+- 4 Unique Dashboards: Analytics, Ecommerce, Marketing, and CRM (More will be added)
+- 120+ Dashboard UI Components
+- 200+ Total UI Elements
+- 45+ HTML Files
+- All Essential Elements and Files
+- Full Figma Design Source - As Shown on Demo
+___
 
-Designed for those who like modern UI elements and beautiful websites. Made of
-hundred of elements, designed blocks, and fully coded pages, Horizon UI is ready
-to help you create stunning websites and web apps.
+#### [TailAdmin Next.js FREE](https://free-nextjs-demo.tailadmin.com/)
+- 1 Unique Dashboard
+- 30+ Dashboard UI Components
+- 50+ Total UI Elements 
+- 10+ HTML Files
+- TypeScript Support
+- Basic UI Kit Elements and Files
+- Figma Design Source - Free Sample
+___
 
-Save hundreds of hours trying to create and develop a dashboard from scratch.
-The fastest, most responsive & trendiest dashboard is here. Seriously.
+### [⬇️ Download Now](https://tailadmin.com/download)
 
-With Horizon UI you will find many examples of pages like NFTs Pages,
-Authentication Pages, Profile, and so on. Just choose between a Basic Design or a
-cover and you are good to go!
+### [⚡ Get PRO Version](https://tailadmin.com/pricing)
 
-### 🎉 [NEW] Horizon UI Components
+### [📄 Documentation/Installation](https://tailadmin.com/docs)
 
-All the main components from both versions. This will help you to see and interact with all & the latest added components of Horizon (also, new components are on the way, stay tuned)! ⚡️
-<a href="https://horizon-ui.com/components/?ref=readme-horizon-tailwind-nextjs" target="_blank">See all components</a>
+### [🖌️ TailAdmin Figma Free Sample](https://www.figma.com/community/file/1214477970819985778)
 
-### Documentation
+### [👉 TailAdmin HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
 
-Each element is well presented in a very complex documentation. You can read
-more about the <a href="https://horizon-ui.com/docs-tailwind/docs/react/installation?ref=readme-horizon-tailwind-nextjs" target="_blank">documentation
-here.</a>
 
-### Quick Start
+## Installation
 
-Install Horizon UI by running either of the following:
+Here are the steps you need to follow to install the dependencies.
 
-- Install NodeJS LTS from [NodeJs Official Page](https://nodejs.org/en/?ref=horizon-documentation)
-  (NOTE: Product only works with LTS version)
+1. Download and extract the template from Next.js Templates.
 
-- Install Yarn CLI from [Yarn Official Page](https://yarnpkg.com/cli/install?ref=horizon-documentation)
+2. After that **cd** into the template directory then run this command to install all the dependencies
 
-Clone the repository with the following command:
-
-```bash
-git clone https://github.com/horizon-ui/horizon-tailwind-react-nextjs.git
 ```
+npm install
+```
+or
 
-Run in terminal this command:
-
-```bash
+```
 yarn install
 ```
 
-Then run this command to start your local server
+3. Now run this command to start the developement server
 
-```bash
+```
+npm run dev
+```
+
+or 
+
+```
 yarn dev
 ```
 
-### Example Pages
 
-If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project. View <a href="https://horizon-ui.com/horizon-tailwind-react-nextjs/?ref=readme-horizon-tailwind-nextjs" target="_blank">example pages here.</a>
+## Free Admin Dashboard Template for Next.js Built-with Tailwind CSS, React 18 and TypeScript
+TailAdmin Next.js is a free dashboard template, which uses Tailwind CSS, is a great starting point for dashboard UI. This template uses the Next.js JavaScript framework and the easy-to-use Tailwind CSS framework. The Tailwind CSS and Next.js Dashboard Template comes with ready-made components like navigation menus, charts, tables, and forms. These components can be easily adjusted and added to any Next.js web application.
 
-### Versions
+TailAdmin for Next.js provides all essential Next.js + Tailwind CSS UI components that can be copied and pasted directly into your dashboard projects. The range of components includes charts, graphs, navbars, tabs, buttons, cards, tables, profiles, forms, modals, app pages, calendars, web app example templates, and more, all coded for Next.js React and styled using Tailwind CSS.
 
-| Free Version                                                                                                                                         | PRO Version                                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [![Horizon UI Tailwind NextJS](https://i.ibb.co/mtLkcYL/horizon-ui-nextjs-free.png)](https://www.horizon-ui.com/?ref=readme-horizon-tailwind-nextjs) | [![Horizon UI NextJS PRO](https://i.ibb.co/sPSYxGv/horizon-2-0-pro-presentation-image.png)](https://www.horizon-ui.com/pro?ref=readme-horizon-tailwind-nextjs) |
+If you're on the hunt for a top-quality Next.js-Tailwind Dashboard, Admin Panel Template, or UI Kit, TailAdmin is the perfect choice for you!
 
-### Figma Version
+### 📄 License
+TailAdmin Next.js Free is 100% free and open-source; feel free to use it with your personal and commercial projects.
 
-Horizon UI is available in Figma format as well! Check it out on Figma
-Community! 🎨
-[See the Horizon UI Figma design files](https://bit.ly/horizon-figma)
-
-### Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the Horizon UI. Here are
-some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the Horizon UI Dashbaord.
-   Check the CHANGELOG from your dashboard on our
-   [CHANGE LOG File](https://github.com/horizon-ui/horizon-tailwind-react-nextjs/blob/main/CHANGELOG.md?ref=readme-horizon-tailwind-nextjs).
-2. Providing us reproducible steps for the issue will shorten the time it takes
-   for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you
-   encountered the issue might help.
-
----
-
-### Community
-
-Connect with the community! Feel free to ask questions, report issues, and meet
-new people that already use Horizon UI!
-
-💬 [Join the #HorizonUI Discord Community!](https://discord.gg/f6tEKFBd4m)
-
-### Copyright and license
-
-⭐️ [Copyright 2023 Simmmple ](https://www.horizon-ui.com/?ref=readme-horizon-tailwind-nextjs)
-
-📄 [Horizon UI License](https://www.horizon-ui.com/?ref=readme-horizon-tailwind-nextjs)
+### 💜 Support
+If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!
