@@ -1,17 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { useEffect } from "react";
+import { useTheme } from "next-themes";
 import useLocalStorage from "./useLocalStorage";
+import { useEffect } from "react";
+
 
 const useColorMode = () => {
   const [colorMode, setColorMode] = useLocalStorage("color-theme", "light");
+  const { setTheme } = useTheme()
 
   useEffect(() => {
-    const className = "dark";
-    const bodyClass = window.document.body.classList;
-
-    colorMode === "dark"
-      ? bodyClass.add(className)
-      : bodyClass.remove(className);
+    setTheme(colorMode)
   }, [colorMode]);
 
   return [colorMode, setColorMode];
