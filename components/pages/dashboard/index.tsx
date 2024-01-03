@@ -1,16 +1,6 @@
 'use client'
-import React from 'react'
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import { Input } from "@/components/ui/input"
 import { DatePicker } from '@/components/ui/datepicker'
+import { Input } from "@/components/ui/input"
 import {
     Select,
     SelectContent,
@@ -20,11 +10,20 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow
+} from "@/components/ui/table"
 
 
 const Dashboard = () => {
     return (
         <>
+            <div className="text-3xl mb-4">Dashboard</div>
             <div className="flex gap-3">
                 <Input type="text" placeholder="Search..." />
                 <DatePicker />
