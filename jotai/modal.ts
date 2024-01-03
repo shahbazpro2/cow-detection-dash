@@ -40,7 +40,7 @@ export const openCloseModalAtom = atom(null, (get, set, { key, status, data }: O
   }
 });
 
-export const getModalAtom = (key: string) => atom((get) => get(modalAtom)[key]);
+export const getModalAtom = (key: string) => atom((get: any) => get(modalAtom)[key]);
 
 export const useModalState = (key: string) => {
   const [modalVal] = useAtom(React.useMemo(() => getModalAtom(key), []));
