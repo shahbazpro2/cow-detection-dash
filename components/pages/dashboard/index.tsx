@@ -19,32 +19,96 @@ import {
     TableHeader,
     TableRow
 } from "@/components/ui/table"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useApi } from 'use-hook-api'
+import moment from 'moment'
+import { RxCross1 } from "react-icons/rx";
 
 
 const Dashboard = () => {
+    const [filters, setFilters] = useState<any>({
+        search: '',
+        date: '',
+        activityType: ''
+    })
+    const [origData, setOrigData] = useState<any>([])
+    const [filterData, setFilterData] = useState<any>([])
     const [callApi, { data }] = useApi({})
 
     useEffect(() => {
-        callApi(getDashboardVideoApi())
+        callApi(getDashboardVideoApi(), ({ data }) => {
+            setOrigData(data)
+            setFilterData(data)
+        })
     }, [])
 
+    useEffect(() => {
+        let tempData = origData
+        if (filters.search) {
+            tempData = tempData.filter((item: any) => item['cow-id'].includes(filters.search))
+        }
+        if (filters.date) {
+            tempData = tempData.filter((item: any) => item['Uploaded-Date'] === moment(filters.date).format('YYYY-MM-DD'))
+        }
+        if (filters.activityType) {
+            tempData = tempData.filter((item: any) => item['Activity-Type'] === filters.activityType)
+        }
+        setFilterData(tempData)
+    }, [filters])
+
+
+    console.log('filtere', filters)
     return (
         <>
-            <div className="text-3xl mb-4">Dashboard</div>
+            <div className="flex justify-between items-center">
+                <div className="text-3xl mb-4">Dashboard</div>
+                {
+                    Object.keys(filters).some((item: any) => filters[item]) &&
+                    <div className='flex items-center gap-1 cursor-pointer bg-white/20 text-white/70 rounded px-3 py-1' onClick={
+                        () => setFilters({
+                            search: '',
+                            date: '',
+                            activityType: ''
+                        })
+
+                    }>
+                        Clear All Filters
+                        <RxCross1 />
+                    </div>
+                }
+            </div>
             <div className="flex gap-3">
-                <Input type="text" placeholder="Search..." />
-                <DatePicker />
-                <Select>
+                <Input type="text" placeholder="Search..." value={filters.search} onChange={
+                    (e) => setFilters({
+                        ...filters,
+                        search: e.target.value
+                    })
+                } />
+                <DatePicker date={
+                    filters.date
+                }
+                    setDate={
+                        (e: any) => setFilters({
+                            ...filters,
+                            date: e
+                        })
+                    } />
+                <Select value={filters.activityType} onValueChange={
+                    (value) => {
+                        setFilters({
+                            ...filters,
+                            activityType: value || filters.activityType
+                        })
+                    }
+                }>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Activity Type" />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectGroup>
                             <SelectLabel>Activity Type</SelectLabel>
-                            <SelectItem value='payment' >Payment</SelectItem>
-                            <SelectItem value="refund">Refund</SelectItem>
+                            <SelectItem value='Brushing' >Brushing</SelectItem>
+                            <SelectItem value="Drinking">Drinking</SelectItem>
                         </SelectGroup>
                     </SelectContent>
                 </Select>
@@ -65,7 +129,7 @@ const Dashboard = () => {
                     </TableHeader>
                     <TableBody>
                         {
-                            data?.map((item: any, index: number) => (
+                            filterData?.map((item: any, index: number) => (
                                 <TableRow key={index}>
                                     <TableCell className="font-medium">{item['cow-id']}</TableCell>
                                     <TableCell className="font-medium">{item['Video-Name']}</TableCell>
