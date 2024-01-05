@@ -9,6 +9,11 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider"
 import useColorMode from "@/hooks/useColorMode";
+import { Axios } from 'use-hook-api'
+import FeedbackWrapper from "@/components/FeedbackWrapper";
+
+Axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
+
 
 export default function RootLayout({
   children,
@@ -68,6 +73,7 @@ export default function RootLayout({
               </div>
             )}
           </ThemeProvider>
+          <FeedbackWrapper />
         </div>
       </body>
     </html>

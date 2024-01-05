@@ -1,4 +1,5 @@
 'use client'
+import { getDashboardVideoApi } from '@/api/dashboard'
 import { DatePicker } from '@/components/ui/datepicker'
 import { Input } from "@/components/ui/input"
 import {
@@ -18,9 +19,17 @@ import {
     TableHeader,
     TableRow
 } from "@/components/ui/table"
+import { useEffect } from 'react'
+import { useApi } from 'use-hook-api'
 
 
 const Dashboard = () => {
+    const [callApi, { data }] = useApi({})
+
+    useEffect(() => {
+        callApi(getDashboardVideoApi())
+    }, [])
+
     return (
         <>
             <div className="text-3xl mb-4">Dashboard</div>
@@ -51,16 +60,23 @@ const Dashboard = () => {
                             <TableHead>Uploaded Time</TableHead>
                             <TableHead>Activity Type</TableHead>
                             <TableHead>Duration</TableHead>
-                            <TableHead>View Output</TableHead>
+                            {/*        <TableHead>View Output</TableHead> */}
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <TableRow>
-                            <TableCell className="font-medium">INV001</TableCell>
-                            <TableCell>Paid</TableCell>
-                            <TableCell>Credit Card</TableCell>
-                            <TableCell className="text-right">$250.00</TableCell>
-                        </TableRow>
+                        {
+                            data?.map((item: any, index: number) => (
+                                <TableRow key={index}>
+                                    <TableCell className="font-medium">{item['cow-id']}</TableCell>
+                                    <TableCell className="font-medium">{item['Video-Name']}</TableCell>
+                                    <TableCell>{item['Uploaded-Date']}</TableCell>
+                                    <TableCell>{item['Uploaded-Time']}</TableCell>
+                                    <TableCell >{item['Activity-Type']}</TableCell>
+                                    <TableCell>{item['Duration']}</TableCell>
+                                </TableRow>
+
+                            ))
+                        }
                     </TableBody>
                 </Table>
 

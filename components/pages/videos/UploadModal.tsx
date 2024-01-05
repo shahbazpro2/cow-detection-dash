@@ -2,10 +2,20 @@ import React from 'react'
 import BasicModal from '../../ui/basicModal'
 import { useModalAtom, useOpenCloseModal } from '@/jotai/modal'
 import { Button } from '../../ui/button'
+import { useApi, useSetFeedback } from 'use-hook-api'
+import { uploadVideoApi } from '@/api/videos'
+import { RxCross1 } from "react-icons/rx";
+import { ReloadIcon } from "@radix-ui/react-icons"
 export const uploadMKey = 'uploadMKey'
+
 
 const UploadModal = () => {
     const [modalVal, openCloseModal] = useModalAtom(uploadMKey)
+    const [file, setFile] = React.useState<any>(null)
+    const setFeedback = useSetFeedback()
+    const [callApi, { loading }] = useApi({})
+    const [, { refetch }] = useApi({ cache: 'video-list' })
+    const fileRef = React.useRef<any>(null)
 
 
     console.log('modalvalll', modalVal, openCloseModal)
@@ -18,16 +28,33 @@ const UploadModal = () => {
         })
     }
 
+    const onSubmit = () => {
+        console.log('file', file)
+        if (!file) {
+            setFeedback([['Please select a file'], 'error'])
+            return
+        }
+        const formData = new FormData()
+        formData.append('file', file)
+        callApi(uploadVideoApi(formData), () => {
+            refetch()
+            onClose()
+        })
+
+    }
+
     return (
-        <BasicModal open={modalVal?.status}  >
+        <BasicModal open={modalVal?.status} disableCross>
             <div
                 id="FileUpload"
                 className="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border-2 border-dashed border-green-800 bg-black/20 py-4 px-4 dark:bg-black/50 sm:py-7.5"
             >
                 <input
+                    ref={fileRef}
                     type="file"
-                    accept="image/*"
+                    accept="videos/*"
                     className="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none"
+                    onChange={(e) => setFile(e.target.files?.[0])}
                 />
                 <div className="flex flex-col items-center justify-center space-y-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
@@ -63,12 +90,33 @@ const UploadModal = () => {
                         drag and drop
                     </p>
                 </div>
+                {/* show file upload name and remove icon=react-icons */}
+                {
+                    file &&
+                    <div className="absolute bottom-0 left-0 right-0 flex justify-between items-center p-2 z-[100]">
+                        <div className="flex items-center gap-2">
+                            <span className="text-white">{file?.name}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className='bg-red-500 text-white rounded p-1' onClick={(e: any) => {
+                                e.stopPropagation()
+                                fileRef.current.value = ''
+                                setFile(null)
+                            }}>
+                                <RxCross1 className="text-gray-400 size-5" />
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
             <div className="flex justify-between">
                 <Button type="button" variant='secondary' className='border dark:border-white/60 dark:!text-white/60 dark:!bg-transparent' onClick={onClose}>
                     Close
                 </Button>
-                <Button type="button" variant="default">
+                <Button type="button" disabled={loading} variant="default" onClick={onSubmit}>
+                    {
+                        loading && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                    }
                     Upload
                 </Button>
             </div>

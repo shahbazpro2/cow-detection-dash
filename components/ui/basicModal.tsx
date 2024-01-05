@@ -4,16 +4,18 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 
 interface Props {
     children: ReactNode
-    title?: string
     open: boolean
-    footer?: ReactNode
+    className?: string
     onClose?: () => void
+    title?: string
+    footer?: ReactNode
+    disableCross?: boolean
 }
 
-const BasicModal = ({ children, title, footer, open, onClose }: Props) => {
+const BasicModal = ({ children, title, footer, open, onClose, disableCross, className }: Props) => {
     return (
         <Dialog open={open} onOpenChange={onClose} >
-            <DialogContent disableCross>
+            <DialogContent disableCross={disableCross} className={className}>
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                 </DialogHeader>
