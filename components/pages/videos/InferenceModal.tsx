@@ -15,9 +15,9 @@ const InferenceModal = () => {
 
     useEffect(() => {
         if (modalVal?.status) {
-            callApi(inferenceVideoApi({
-                video_name: modalVal?.data?.video_name
-            }), () => {
+            const formData = new FormData()
+            formData.append('video_name', modalVal?.data?.video_name)
+            callApi(inferenceVideoApi(formData), () => {
                 refetch()
                 onClose()
             })

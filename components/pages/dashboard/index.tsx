@@ -44,15 +44,12 @@ const Dashboard = () => {
 
     useEffect(() => {
         let tempData = origData
-        if (filters.search) {
-            tempData = tempData.filter((item: any) => item['cow-id'].includes(filters.search))
-        }
-        if (filters.date) {
-            tempData = tempData.filter((item: any) => item['Uploaded-Date'] === moment(filters.date).format('YYYY-MM-DD'))
-        }
-        if (filters.activityType) {
-            tempData = tempData.filter((item: any) => item['Activity-Type'] === filters.activityType)
-        }
+        tempData = tempData.filter((item: any) => {
+            const matchesSearch = filters.search ? item['cow-id'].includes(filters.search) : true;
+            const matchesDate = filters.date ? item['Uploaded-Date'] === moment(filters.date).format('YYYY-MM-DD') : true;
+            const matchesActivityType = filters.activityType ? item['Activity-Type'] === filters.activityType : true;
+            return matchesSearch && matchesDate && matchesActivityType;
+        });
         setFilterData(tempData)
     }, [filters])
 
