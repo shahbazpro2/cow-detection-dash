@@ -74,9 +74,10 @@ const Cows = () => {
     useEffect(() => {
         let tempData = origData
         tempData = tempData.filter((item: any) => {
-            const matchesSearch = filters.search ? item['Cow-ID']?.toString()?.includes(filters.search) : true;
-            const matchesDate = filters.date ? item['Uploaded-Date'] === moment(filters.date).format('YYYY-MM-DD') : true;
-            return matchesSearch && matchesDate;
+            //search on all fields
+            const matchesSearch = filters.search ? Object.keys(item).some((key: any) => item[key].toString().toLowerCase().includes(filters.search.toLowerCase())) : true;
+            //const matchesDate = filters.date ? item['Uploaded-Date'] === moment(filters.date).format('YYYY-MM-DD') : true;
+            return matchesSearch;
         });
         setFilterData(tempData)
     }, [filters])
@@ -126,26 +127,28 @@ const Cows = () => {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Cow ID</TableHead>
+                            {/*    <TableHead>Cow ID</TableHead> */}
                             <TableHead>Cluster</TableHead>
-                            <TableHead>Video Name</TableHead>
+                            {/*      <TableHead>Video Name</TableHead> */}
                             <TableHead>Cow Image</TableHead>
-                            <TableHead>Upload Date</TableHead>
-                            <TableHead>Upload Time</TableHead>
+                            {/*  <TableHead>Upload Date</TableHead>
+                            <TableHead>Upload Time</TableHead> */}
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {
                             filterData?.map((item: any, index: number) => (
                                 <TableRow key={index}>
-                                    <TableCell className="font-medium">{item['Cow-ID']}</TableCell>
+                                    {/*                   <TableCell className="font-medium">{item['Cow-ID']}</TableCell> */}
                                     <TableCell className="font-medium">{item['Cluster']}</TableCell>
-                                    <TableCell className="font-medium">{item['Video-Name']}</TableCell>
+                                    {/*          <TableCell className="font-medium">{item['Video-Name']}</TableCell> */}
                                     <TableCell>
-                                        <CowImagesGroup images={item["Image-Paths"]} />
+                                        <div className="w-[200px]">
+                                            <CowImagesGroup images={item["Image-Paths"]} />
+                                        </div>
                                     </TableCell>
-                                    <TableCell className="font-medium">{item['Uploaded-Date']}</TableCell>
-                                    <TableCell className="font-medium">{item['Uploaded-Time']}</TableCell>
+                                    {/*  <TableCell className="font-medium">{item['Uploaded-Date']}</TableCell>
+                                    <TableCell className="font-medium">{item['Uploaded-Time']}</TableCell> */}
                                 </TableRow>
                             ))
                         }

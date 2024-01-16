@@ -23,6 +23,7 @@ import { useEffect, useState } from 'react'
 import { useApi } from 'use-hook-api'
 import moment from 'moment'
 import { RxCross1 } from "react-icons/rx";
+import ReactPlayer from 'react-player'
 
 
 const Dashboard = () => {
@@ -45,7 +46,7 @@ const Dashboard = () => {
     useEffect(() => {
         let tempData = origData
         tempData = tempData.filter((item: any) => {
-            const matchesSearch = filters.search ? item['cow-id'].includes(filters.search) : true;
+            const matchesSearch = filters.search ? Object.keys(item).some((key: any) => item[key].toString().toLowerCase().includes(filters.search.toLowerCase())) : true;
             const matchesDate = filters.date ? item['Uploaded-Date'] === moment(filters.date).format('YYYY-MM-DD') : true;
             const matchesActivityType = filters.activityType ? item['Activity-Type'] === filters.activityType : true;
             return matchesSearch && matchesDate && matchesActivityType;
@@ -115,25 +116,28 @@ const Dashboard = () => {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead>Cow ID</TableHead>
+                            <TableHead>Cluster ID</TableHead>
                             <TableHead>Video Name</TableHead>
                             <TableHead>Uploaded Date</TableHead>
                             <TableHead>Uploaded Time</TableHead>
                             <TableHead>Activity Type</TableHead>
                             <TableHead>Duration</TableHead>
-                            {/*        <TableHead>View Output</TableHead> */}
+                            <TableHead className="text-center">Preview</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {
                             filterData?.map((item: any, index: number) => (
                                 <TableRow key={index}>
-                                    <TableCell className="font-medium">{item['cow-id']}</TableCell>
+                                    <TableCell className="font-medium">{item['Cluster_Id']}</TableCell>
                                     <TableCell className="font-medium">{item['Video-Name']}</TableCell>
                                     <TableCell>{item['Uploaded-Date']}</TableCell>
                                     <TableCell>{item['Uploaded-Time']}</TableCell>
                                     <TableCell >{item['Activity-Type']}</TableCell>
                                     <TableCell>{item['Duration']}</TableCell>
+                                    <TableCell className="flex justify-center">
+                                        <ReactPlayer width={200} height={100} controls url={`${process.env.NEXT_PUBLIC_API_URL}/${item['activity_video']}`} />
+                                    </TableCell>
                                 </TableRow>
 
                             ))
